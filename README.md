@@ -1,5 +1,5 @@
 #  Expose two ports with different swagger docs
-This repo aims to create a server exposing two ports. 
+This repo aims to create a server exposing two ports, with separate swagger docs.
 One public port that will be receive traffic coming from a load balancer or similar. 
 One private port that will be receive traffic from a bastian host similar. 
 
