@@ -1,3 +1,15 @@
+#  Expose two ports with different swagger docs
+This repo aims to create a server exposing two ports. 
+One public port that will be receive traffic coming from a load balancer or similar. 
+One private port that will be receive traffic from a bastian host similar. 
+
+Both ports (and the back office port 4000 in particular) expose the /api endpoint that shows the swagger docs. 
+The purpose of this is to use the back office through the swagger docs, without exposing the functionality or the api tot the public, until a more appropriate back office front end has been developed. 
+
+Bellow is regular [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository readme.
+-------------
+
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
 </p>
