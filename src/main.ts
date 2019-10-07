@@ -4,6 +4,7 @@ import * as express from 'express';
 import * as http from 'http';
 import {ExpressAdapter} from '@nestjs/platform-express';
 import { BackOfficeModule } from './modules/backoffice/backoffice.module';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
   // const app = await NestFactory.create(AppModule);
@@ -21,6 +22,16 @@ async function bootstrap() {
     BackOfficeModule,
     new ExpressAdapter(backOfficeServer),
   );
+  
+
+  const options = new DocumentBuilder()
+    .setTitle('BackOffice')
+    .setDescription('The back office API description')
+    .setVersion('1.0')
+    .addTag('backOffice')
+    .build();
+  const document = SwaggerModule.createDocument(backOfficeApp, options);
+  SwaggerModule.setup('api', backOfficeApp, document);
   await backOfficeApp.init();
 
   http.createServer(clientServer).listen(3000); // The public port (Load balancer will route traffic to this port)
